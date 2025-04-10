@@ -85,9 +85,7 @@ const Navbar = () => {
               {item.label}
             </a>
           ))}
-          <Button className="bg-navy-800 hover:bg-navy-900 text-white mt-4" onClick={closeMenu}>
-            <a href="#contact">Get in Touch</a>
-          </Button>
+          {/* Get in Touch button removed */}
         </div>
       </div>
     </header>
