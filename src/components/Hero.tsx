@@ -11,8 +11,8 @@ const Hero = () => {
       <div className="container max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-6 animate-fadeIn">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy-900 leading-tight">
-            Consulting <br />
-            <span className="text-accent">&</span> Product Enthusiast
+            Product <br />
+            <span className="text-accent">&</span> Consulting Enthusiast
           </h1>
           
           <p className="text-lg md:text-xl text-navy-700 max-w-lg">
@@ -42,7 +42,7 @@ const Hero = () => {
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 bg-accent rounded-full"></span>
-                    <span className="text-navy-700">Product Strategy</span>
+                    <span className="text-navy-700">Product Solutions</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 bg-accent rounded-full"></span>
