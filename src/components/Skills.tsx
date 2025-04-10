@@ -19,7 +19,7 @@ const skillCategories = [
   {
     title: "Interests",
     icon: <Lightbulb className="h-5 w-5" />,
-    skills: ["Consumer Psychology", "Growth Hacking"],
+    skills: ["Consumer Psychology", "Growth Hacking", "Prototyping"],
     color: "bg-amber-100 text-amber-700",
   }
 ];

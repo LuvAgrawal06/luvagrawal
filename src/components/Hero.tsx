@@ -11,7 +11,7 @@ const Hero = () => {
       <div className="container max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-6 animate-fadeIn">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy-900 leading-tight">
-            Business Strategist <br />
+            Consulting <br />
             <span className="text-accent">&</span> Product Enthusiast
           </h1>
           

@@ -35,10 +35,10 @@ const About = () => {
           <div className="fade-in-bottom">
             <h3 className="text-2xl font-bold mb-4 text-navy-800">Who I Am</h3>
             <p className="text-navy-700 mb-6 leading-relaxed">
-              I'm a passionate business strategist and product enthusiast currently pursuing an Integrated Dual Degree in Industrial Chemistry at IIT (BHU), Varanasi with a CPI of 9.29.
+              I'm a passionate business strategist and product enthusiast currently pursuing an Integrated Dual Degree in Industrial Chemistry at IIT (BHU), Varanasi.
             </p>
             <p className="text-navy-700 mb-6 leading-relaxed">
-              My academic excellence is complemented by practical experience in product management and strategic case competitions, where I've consistently demonstrated my ability to analyze complex problems and develop innovative solutions.
+              My academic excellence is complemented by practical experience in product management, Consulting and strategic case competitions, where I've consistently demonstrated my ability to analyze complex problems and develop innovative solutions.
             </p>
             <p className="text-navy-700 leading-relaxed">
               I'm driven by a curiosity about consumer psychology and a passion for creating products and strategies that truly resonate with users while driving business growth.
