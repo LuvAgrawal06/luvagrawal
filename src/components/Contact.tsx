@@ -45,9 +45,6 @@ const Contact = () => {
   }, []);
 
   return (
-    <section id="contact" className="bg-white section-padding">
-      <div className="container max-w-6xl mx-auto">
-        <h2 className="section-title">Get In Touch</h2>
         
         <div className="mt-12 flex justify-center">
           <div className="fade-in-bottom max-w-xl w-full">
@@ -66,7 +63,7 @@ const Contact = () => {
                     >
                       {item.value}
                     </a>
-                  </div>
+                
                 </div>
               ))}
             </div>
