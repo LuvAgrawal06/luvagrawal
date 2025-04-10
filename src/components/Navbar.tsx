@@ -6,7 +6,7 @@ import { Menu, X } from 'lucide-react';
 const navItems = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Case Studies", href: "#case-studies" },
+  { label: "Competitions", href: "#case-studies" },
   { label: "Achievements", href: "#achievements" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" }
@@ -41,7 +41,7 @@ const Navbar = () => {
     >
       <div className="container max-w-6xl mx-auto px-4 flex justify-between items-center">
         <a href="#home" className="text-xl md:text-2xl font-display font-bold text-navy-800">
-          Luv<span className="text-accent">Agrawal</span>
+          Luv<span className="text-navy-800"> Agrawal</span>
         </a>
         
         {/* Desktop Navigation */}
