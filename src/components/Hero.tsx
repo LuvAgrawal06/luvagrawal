@@ -38,7 +38,7 @@ const Hero = () => {
               <p className="text-navy-700 font-medium">IIT (BHU), Varanasi</p>
               <p className="text-navy-600 mb-4">Industrial Chemistry (IDD)</p>
               
-              <div className="border-t border-navy-200 pt-4 mt-4">
+              {/* <div className="border-t border-navy-200 pt-4 mt-4">
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 bg-accent rounded-full"></span>
@@ -59,7 +59,7 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
