@@ -21,7 +21,7 @@ const Hero = () => {
           
           <div className="flex flex-wrap gap-4 pt-4">
             <Button className="bg-navy-800 hover:bg-navy-900 text-white">
-              <a href="#case-studies">View Case Studies</a>
+              <a href="#case-studies">View My Work</a>
             </Button>
             <Button variant="outline" className="border-navy-800 text-navy-800">
               <a href="#about">Learn More</a>
