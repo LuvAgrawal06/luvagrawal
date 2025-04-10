@@ -1,12 +1,12 @@
 
 import React, { useEffect } from 'react';
-import { Brush, Lightbulb, LineChart, Tool } from 'lucide-react';
+import { Wrench, Lightbulb, LineChart } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const skillCategories = [
   {
     title: "Tools",
-    icon: <Tool className="h-5 w-5" />,
+    icon: <Wrench className="h-5 w-5" />,
     skills: ["Canva", "Figma", "Framer"],
     color: "bg-blue-100 text-blue-700",
   },
