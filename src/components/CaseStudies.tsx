@@ -50,7 +50,7 @@ const CaseStudies = () => {
     <section id="case-studies" className="bg-navy-50 section-padding">
       <div className="container max-w-6xl mx-auto">
         <div className="flex justify-between items-end flex-wrap gap-4 mb-8">
-          <h2 className="section-title">Case Studies</h2>
+          <h2 className="section-title">Competitions</h2>
           <Button variant="outline" className="border-navy-600 text-navy-700 flex items-center gap-2">
             View All
             <ArrowRight className="h-4 w-4" />
@@ -94,7 +94,7 @@ const CaseStudies = () => {
               
               <CardFooter className="flex justify-end">
                 <Button variant="ghost" className="text-navy-700 hover:text-navy-900 p-0">
-                  Read Case Study <ExternalLink className="ml-1 h-3 w-3" />
+                  View Details <ExternalLink className="ml-1 h-3 w-3" />
                 </Button>
               </CardFooter>
             </Card>
