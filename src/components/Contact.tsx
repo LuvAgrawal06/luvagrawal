@@ -1,8 +1,5 @@
 
 import React, { useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, Linkedin } from 'lucide-react';
 
 const contactInfo = [
@@ -52,8 +49,8 @@ const Contact = () => {
       <div className="container max-w-6xl mx-auto">
         <h2 className="section-title">Get In Touch</h2>
         
-        <div className="mt-12 grid md:grid-cols-2 gap-12">
-          <div className="fade-in-bottom">
+        <div className="mt-12 flex justify-center">
+          <div className="fade-in-bottom max-w-xl w-full">
             <h3 className="text-2xl font-bold text-navy-800 mb-6">Contact Information</h3>
             <div className="space-y-6">
               {contactInfo.map((item) => (
@@ -80,59 +77,6 @@ const Contact = () => {
                 I'm always open to discussing product design work, business strategy opportunities, or potential collaborations.
               </p>
             </div>
-          </div>
-          
-          <div className="fade-in-bottom">
-            <form className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-navy-700 mb-1">
-                  Name
-                </label>
-                <Input 
-                  id="name" 
-                  type="text" 
-                  placeholder="Your Name" 
-                  className="border-navy-200 focus:border-navy-500"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-navy-700 mb-1">
-                  Email
-                </label>
-                <Input 
-                  id="email" 
-                  type="email" 
-                  placeholder="Your Email" 
-                  className="border-navy-200 focus:border-navy-500"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-navy-700 mb-1">
-                  Subject
-                </label>
-                <Input 
-                  id="subject" 
-                  type="text" 
-                  placeholder="Subject" 
-                  className="border-navy-200 focus:border-navy-500"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-navy-700 mb-1">
-                  Message
-                </label>
-                <Textarea 
-                  id="message" 
-                  placeholder="Your message" 
-                  className="border-navy-200 focus:border-navy-500 min-h-32"
-                />
-              </div>
-              
-              <Button className="bg-navy-800 hover:bg-navy-900 w-full">Send Message</Button>
-            </form>
           </div>
         </div>
       </div>
