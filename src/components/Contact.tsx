@@ -47,14 +47,14 @@ const Contact = () => {
   return (
     <section id="contact" className="bg-white section-padding">
       <div className="container max-w-6xl mx-auto">
-        <h2 className="section-title">Get In Touch</h2>
+        <h2 className="section-title">Contact</h2>
         
         <div className="mt-12 flex justify-center">
           <div className="fade-in-bottom max-w-xl w-full">
             <h3 className="text-2xl font-bold text-navy-800 mb-6">Contact Information</h3>
             <div className="space-y-6">
               {contactInfo.map((item) => (
-                <div key={item.title} className="flex items-start gap-4">
+                <div key={item.title} className="flex items-start gap-4 hover:bg-navy-50 p-3 rounded-lg transition-colors">
                   <div className="bg-navy-100 p-3 rounded-full text-navy-700">
                     {item.icon}
                   </div>
@@ -72,9 +72,9 @@ const Contact = () => {
             </div>
             
             <div className="mt-10">
-              <h3 className="text-xl font-bold text-navy-800 mb-4">Let's Connect</h3>
+              <h3 className="text-xl font-bold text-navy-800 mb-4">Available for Opportunities</h3>
               <p className="text-navy-700">
-                I'm always open to discussing product design work, business strategy opportunities, or potential collaborations.
+                Feel free to reach out for consulting projects, product strategy discussions, or potential collaborations.
               </p>
             </div>
           </div>
