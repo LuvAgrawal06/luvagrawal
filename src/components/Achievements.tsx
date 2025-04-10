@@ -24,8 +24,8 @@ const achievements = [
   },
   {
     id: 4,
-    title: "1st Runner-Up (E-Summit'25 IIT BHU)",
-    competition: "ADventure",
+    title: "1st Runner-Up",
+    competition: "ADventure (E-Summit'25 IIT BHU)",
     icon: <Medal className="h-6 w-6 text-silver" />,
   },
   {
