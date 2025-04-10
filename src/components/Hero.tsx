@@ -12,7 +12,7 @@ const Hero = () => {
         <div className="space-y-6 animate-fadeIn">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy-900 leading-tight">
             Product <br />
-            <span className="text-accent">&</span> Consulting Enthusiast
+            <span className="text-accent">&</span> Consulting
           </h1>
           
           <p className="text-lg md:text-xl text-navy-700 max-w-lg">
