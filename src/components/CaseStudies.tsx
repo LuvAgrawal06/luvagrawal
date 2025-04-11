@@ -46,8 +46,8 @@ const caseStudies = [
   },
   {
     id: 5,
-    title: "PMx'25",
-    description: "Developed a product roadmap and go-to-market strategy for an AI-powered productivity tool.",
+    title: "The Product Management Expedition",
+    description: "Developed a product roadmap and go-to-market strategy for Zomato.",
     image: "/placeholder.svg",
     tags: ["Product Management", "Roadmapping", "Supply Chain", "Go To Market Strategy"],
     icon: <Code className="h-5 w-5" />,
