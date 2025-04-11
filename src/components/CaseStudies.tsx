@@ -4,6 +4,7 @@ import { ArrowRight, ExternalLink, Eye, LineChart } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const caseStudies = [
   {
@@ -63,49 +64,63 @@ const CaseStudies = () => {
           </Link>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {caseStudies.map((study) => (
-            <Card key={study.id} className="fade-in-bottom overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg">
-              <div className="relative h-48 bg-navy-100">
-                <img 
-                  src={study.image} 
-                  alt={study.title} 
-                  className="w-full h-full object-cover opacity-60"
-                />
-                <div className="absolute top-4 left-4">
-                  <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm ${study.color}`}>
-                    {study.icon}
-                    {study.title}
-                  </span>
-                </div>
-              </div>
-              
-              <CardHeader>
-                <CardTitle className="text-xl">{study.title}</CardTitle>
-                <CardDescription className="text-navy-600">{study.description}</CardDescription>
-              </CardHeader>
-              
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {study.tags.map((tag) => (
-                    <span 
-                      key={tag} 
-                      className="bg-navy-100 text-navy-700 text-xs px-2 py-1 rounded"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-              
-              <CardFooter className="flex justify-end">
-                <Button variant="ghost" className="text-navy-700 hover:text-navy-900 p-0">
-                  View Details <ExternalLink className="ml-1 h-3 w-3" />
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
+        <Carousel 
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent>
+            {caseStudies.map((study) => (
+              <CarouselItem key={study.id} className="md:basis-1/2">
+                <Card className="overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg h-full">
+                  <div className="relative h-48 bg-navy-100">
+                    <img 
+                      src={study.image} 
+                      alt={study.title} 
+                      className="w-full h-full object-cover opacity-60"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm ${study.color}`}>
+                        {study.icon}
+                        {study.title}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <CardHeader>
+                    <CardTitle className="text-xl">{study.title}</CardTitle>
+                    <CardDescription className="text-navy-600">{study.description}</CardDescription>
+                  </CardHeader>
+                  
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {study.tags.map((tag) => (
+                        <span 
+                          key={tag} 
+                          className="bg-navy-100 text-navy-700 text-xs px-2 py-1 rounded"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                  
+                  <CardFooter className="flex justify-end">
+                    <Button variant="ghost" className="text-navy-700 hover:text-navy-900 p-0">
+                      View Details <ExternalLink className="ml-1 h-3 w-3" />
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="flex justify-end mt-4 gap-2">
+            <CarouselPrevious className="relative -left-0 top-0 translate-y-0" />
+            <CarouselNext className="relative -right-0 top-0 translate-y-0" />
+          </div>
+        </Carousel>
       </div>
     </section>
   );

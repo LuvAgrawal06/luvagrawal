@@ -7,6 +7,7 @@ import { Pagination, PaginationContent, PaginationItem, PaginationLink, Paginati
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const allCompetitions = [
   {
@@ -106,10 +107,72 @@ const CompetitionsPage = () => {
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-navy-800 mb-6">Competitions</h1>
-          <p className="text-navy-600 text-lg mb-12 max-w-3xl">
+          <p className="text-navy-600 text-lg mb-8 max-w-3xl">
             A showcase of the various competitions I've participated in, highlighting my problem-solving approach and creative solutions.
           </p>
           
+          <div className="mb-12">
+            <h2 className="text-2xl font-semibold text-navy-800 mb-6">Featured Competitions</h2>
+            <Carousel 
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                {allCompetitions.map((competition) => (
+                  <CarouselItem key={competition.id} className="pl-4 sm:basis-1/2 lg:basis-1/3">
+                    <Card className="overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg h-full">
+                      <div className="relative h-48 bg-navy-100">
+                        <img 
+                          src={competition.image} 
+                          alt={competition.title} 
+                          className="w-full h-full object-cover opacity-60"
+                        />
+                        <div className="absolute top-4 left-4">
+                          <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm ${competition.color}`}>
+                            {competition.icon}
+                            {competition.title}
+                          </span>
+                        </div>
+                      </div>
+                      
+                      <CardHeader>
+                        <CardTitle className="text-xl">{competition.title}</CardTitle>
+                        <CardDescription className="text-navy-600">{competition.description}</CardDescription>
+                      </CardHeader>
+                      
+                      <CardContent>
+                        <div className="flex flex-wrap gap-2">
+                          {competition.tags.map((tag) => (
+                            <span 
+                              key={tag} 
+                              className="bg-navy-100 text-navy-700 text-xs px-2 py-1 rounded"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </CardContent>
+                      
+                      <CardFooter className="flex justify-end">
+                        <Button variant="ghost" className="text-navy-700 hover:text-navy-900 p-0">
+                          View Details <ExternalLink className="ml-1 h-3 w-3" />
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-end mt-4 gap-2">
+                <CarouselPrevious className="relative -left-0 top-0 translate-y-0" />
+                <CarouselNext className="relative -right-0 top-0 translate-y-0" />
+              </div>
+            </Carousel>
+          </div>
+          
+          <h2 className="text-2xl font-semibold text-navy-800 mb-6">All Competitions</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {allCompetitions.map((competition) => (
               <Card 
