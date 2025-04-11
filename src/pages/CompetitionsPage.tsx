@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { ArrowLeft, ExternalLink, Eye, LineChart, Rocket, Users, Code, Lightbulb } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -146,15 +145,18 @@ const CompetitionsPage = () => {
             <h2 className="text-2xl font-semibold text-navy-800 mb-6">Featured Competitions</h2>
             <Carousel 
               opts={{
-                align: "start",
+                align: "center",
                 loop: true,
               }}
               className="w-full"
+              autoplay={true}
+              autoplayInterval={10000}
+              highlightCenter={true}
             >
               <CarouselContent className="-ml-4">
-                {allCompetitions.map((competition) => (
-                  <CarouselItem key={competition.id} className="pl-4 sm:basis-1/2 lg:basis-1/3">
-                    <Card className="overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg h-full">
+                {allCompetitions.map((competition, index) => (
+                  <CarouselItem key={competition.id} className="pl-4 sm:basis-1/2 lg:basis-1/3 peer" data-active={index === 1 ? true : false}>
+                    <Card className="overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg h-full group-data-[center-item=true]:shadow-xl">
                       <div className="relative h-48 bg-navy-100">
                         <img 
                           src={competition.image} 

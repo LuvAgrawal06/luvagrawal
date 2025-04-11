@@ -18,6 +18,9 @@ type CarouselProps = {
   plugins?: CarouselPlugin
   orientation?: "horizontal" | "vertical"
   setApi?: (api: CarouselApi) => void
+  autoplay?: boolean
+  autoplayInterval?: number
+  highlightCenter?: boolean
 }
 
 type CarouselContextProps = {
@@ -27,6 +30,7 @@ type CarouselContextProps = {
   scrollNext: () => void
   canScrollPrev: boolean
   canScrollNext: boolean
+  highlightCenter?: boolean
 } & CarouselProps
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null)
@@ -53,6 +57,9 @@ const Carousel = React.forwardRef<
       plugins,
       className,
       children,
+      autoplay = false,
+      autoplayInterval = 10000,
+      highlightCenter = false,
       ...props
     },
     ref
@@ -97,6 +104,19 @@ const Carousel = React.forwardRef<
       [scrollPrev, scrollNext]
     )
 
+    // Handle autoplay
+    React.useEffect(() => {
+      if (!api || !autoplay) return
+      
+      const intervalId = setInterval(() => {
+        api.scrollNext()
+      }, autoplayInterval)
+      
+      return () => {
+        clearInterval(intervalId)
+      }
+    }, [api, autoplay, autoplayInterval])
+
     React.useEffect(() => {
       if (!api || !setApi) {
         return
@@ -131,6 +151,7 @@ const Carousel = React.forwardRef<
           scrollNext,
           canScrollPrev,
           canScrollNext,
+          highlightCenter,
         }}
       >
         <div
@@ -175,16 +196,19 @@ const CarouselItem = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  const { orientation } = useCarousel()
+  const { orientation, highlightCenter } = useCarousel()
 
+  // We'll apply conditional styles based on whether this item is in center
   return (
     <div
       ref={ref}
       role="group"
       aria-roledescription="slide"
+      data-center-item={highlightCenter ? true : undefined}
       className={cn(
-        "min-w-0 shrink-0 grow-0 basis-full",
+        "min-w-0 shrink-0 grow-0 basis-full transition-all duration-300",
         orientation === "horizontal" ? "pl-4" : "pt-4",
+        highlightCenter && "group peer-data-[active=true]:shadow-lg peer-data-[active=true]:scale-105",
         className
       )}
       {...props}

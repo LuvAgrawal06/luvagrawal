@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Slider } from '@/components/ui/slider';
 
 // Updated to include all competitions data
 const caseStudies = [
@@ -103,15 +104,18 @@ const CaseStudies = () => {
         
         <Carousel 
           opts={{
-            align: "start",
+            align: "center",
             loop: true,
           }}
           className="w-full"
+          autoplay={true}
+          autoplayInterval={10000}
+          highlightCenter={true}
         >
           <CarouselContent>
-            {caseStudies.map((study) => (
-              <CarouselItem key={study.id} className="md:basis-1/2 lg:basis-1/3">
-                <Card className="overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg h-full">
+            {caseStudies.map((study, index) => (
+              <CarouselItem key={study.id} className="md:basis-1/2 lg:basis-1/3 peer" data-active={index === 1 ? true : false}>
+                <Card className="overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg h-full group-data-[center-item=true]:shadow-xl">
                   <div className="relative h-48 bg-navy-100">
                     <img 
                       src={study.image} 
