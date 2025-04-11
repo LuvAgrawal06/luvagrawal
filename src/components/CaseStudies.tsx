@@ -10,7 +10,7 @@ import { Slider } from '@/components/ui/slider';
 // Updated to include all competitions data
 const caseStudies = [
   {
-    id: 1,
+    id: 5,
     title: "Design Rush",
     description: "Conducted in-depth UX research and developed a prototype to improve the learning experience platform.",
     image: "/placeholder.svg",
@@ -28,7 +28,7 @@ const caseStudies = [
     color: "bg-green-100 text-green-700",
   },
   {
-    id: 3,
+    id: 6,
     title: "Prodhive (B.A.S.H 7.0)",
     description: "Designed and pitched a product solution for sustainable urban mobility challenges.",
     image: "/placeholder.svg",
@@ -46,7 +46,7 @@ const caseStudies = [
     color: "bg-orange-100 text-orange-700",
   },
   {
-    id: 5,
+    id: 1,
     title: "The Product Management Expedition",
     description: "Developed a product roadmap and go-to-market strategy for Zomato.",
     image: "/placeholder.svg",
@@ -55,7 +55,7 @@ const caseStudies = [
     color: "bg-red-100 text-red-700",
   },
   {
-    id: 6,
+    id: 2,
     title: "Case-O-Nova 6.0",
     description: "Analyzed business case and proposed innovative solution for supply chain optimization.",
     image: "/placeholder.svg",

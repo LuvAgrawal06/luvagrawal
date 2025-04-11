@@ -21,6 +21,7 @@ const Navbar = () => {
         { label: "Achievements", href: "#achievements" },
         { label: "Skills", href: "#skills" },
         { label: "Contact", href: "#contact" }
+        { label: "Certifications", href: "#certifications" }
       ]
     : [
         { label: "Back to Home", href: "/", isRouterLink: true },
