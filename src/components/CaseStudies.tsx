@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { ArrowRight, ExternalLink, Eye, LineChart } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const caseStudies = [
   {
@@ -51,10 +52,15 @@ const CaseStudies = () => {
       <div className="container max-w-6xl mx-auto">
         <div className="flex justify-between items-end flex-wrap gap-4 mb-8">
           <h2 className="section-title">Competitions</h2>
-          <Button variant="outline" className="border-navy-600 text-navy-700 flex items-center gap-2">
-            View All
-            <ArrowRight className="h-4 w-4" />
-          </Button>
+          <Link to="/competitions">
+            <Button 
+              variant="outline" 
+              className="border-navy-600 text-navy-700 hover:bg-navy-100 flex items-center gap-2 transition-all duration-300"
+            >
+              View All
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </Link>
         </div>
         
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
