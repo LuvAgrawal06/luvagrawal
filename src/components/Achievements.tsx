@@ -31,7 +31,13 @@ const achievements = [
   {
     id: 5,
     title: "National Finalist",
-    competition: "7+ Case Competitions",
+    competition: "PMx'25 (IIT G)",
+    icon: <Award className="h-6 w-6 text-navy-600" />,
+  },
+  {
+    id: 6,
+    title: "National Finalist",
+    competition: "Ranked 4th at Case-O-Nova 6.0 (IIM B)",
     icon: <Award className="h-6 w-6 text-navy-600" />,
   },
 ];

@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 const caseStudies = [
   {
     id: 1,
-    title: "Prodes Learn",
+    title: "Design Rush",
     description: "Conducted in-depth UX research and developed a prototype to improve the learning experience platform.",
     image: "/placeholder.svg",
     tags: ["UX Research", "Prototyping", "User Testing"],
@@ -16,7 +16,7 @@ const caseStudies = [
   },
   {
     id: 2,
-    title: "Indian Healthcare Gap Analysis",
+    title: "Prodnosis 5.0",
     description: "Developed a comprehensive monetization strategy and created wireframes for a healthcare solution.",
     image: "/placeholder.svg",
     tags: ["Gap Analysis", "Monetization", "Wireframing"],
