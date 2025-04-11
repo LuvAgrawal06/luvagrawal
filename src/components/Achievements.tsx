@@ -14,13 +14,13 @@ const achievements = [
     id: 2,
     title: "1st Runner-Up",
     competition: "Prodhive (B.A.S.H. 7.0 IIT BHU)",
-    icon: <Medal className="h-6 w-6 text-silver" />,
+    icon: <Medal className="h-6 w-6 text-silver-500" />,
   },
   {
     id: 3,
     title: "1st Runner-Up",
     competition: "Design Rush (E-Summit'25 IIT BHU)",
-    icon: <Medal className="h-6 w-6 text-silver" />,
+    icon: <Medal className="h-6 w-6 text-silver-500" />,
   },
   {
     id: 4,
