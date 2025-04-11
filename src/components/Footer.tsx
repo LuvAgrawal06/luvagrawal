@@ -10,7 +10,7 @@ const Footer = () => {
           <div>
             <h3 className="text-2xl font-bold mb-4">Luv Agrawal</h3>
             <p className="text-navy-200">
-              Business Strategist & Product Enthusiast focused on creating impactful solutions.
+              Business Strategist, Product & Consulting Enthusiast focused on creating impactful solutions.
             </p>
           </div>
           
