@@ -56,7 +56,7 @@ const About = () => {
                     <h4 className="font-bold text-lg text-navy-800">Education</h4>
                     <p className="text-navy-700 mt-1">IIT (BHU), Varanasi</p>
                     <p className="text-navy-600">Integrated Dual Degree in Industrial Chemistry</p>
-                    <div className="mt-2 inline-block bg-navy-100 px-3 py-1 rounded-full text-sm font-medium text-navy-700">
+                    <div className="mt-2 inline-block bg-navy-100 px-3 py-1 rounded-medium text-sm font-medium text-navy-700">
                       CPI: 9.29
                     </div>
                   </div>
@@ -74,7 +74,7 @@ const About = () => {
                     <h4 className="font-bold text-lg text-navy-800">Experience</h4>
                     <p className="text-navy-700 mt-1">Product Management Internships</p>
                     <p className="text-navy-600">Strategic Case Competitions</p>
-                    <div className="mt-2 inline-block bg-navy-100 px-3 py-1 rounded-full text-sm font-medium text-navy-700">
+                    <div className="mt-2 inline-block bg-navy-100 px-3 py-1 rounded-medium text-sm font-medium text-navy-700">
                       Real-world applications
                     </div>
                   </div>
