@@ -90,8 +90,8 @@ const About = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-lg text-navy-800">Achievements</h4>
-                    <p className="text-navy-700 mt-1">National Winner at Prodnosis 5.0 at Technex'25</p>
-                    <p className="text-navy-700 mt-1">National Finalist at PMx'25 & Case-O-Nova 6.0</p>
+                    <p className="text-navy-600 mt-1">National Winner at Prodnosis 5.0 at Technex'25</p>
+                    <p className="text-navy-600">National Finalist at PMx'25 & Case-O-Nova 6.0</p>
                     <p className="text-navy-600">Multiple National Runner-Ups at Several Case Competitions</p>
                     <div className="mt-2 inline-block bg-navy-100 px-3 py-1 rounded-medium text-sm font-medium text-navy-700">
                       7x National Finalist
