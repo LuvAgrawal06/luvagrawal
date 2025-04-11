@@ -58,7 +58,7 @@ const Carousel = React.forwardRef<
       className,
       children,
       autoplay = false,
-      autoplayInterval = 10000,
+      autoplayInterval = 5000,
       highlightCenter = false,
       ...props
     },
@@ -198,7 +198,6 @@ const CarouselItem = React.forwardRef<
 >(({ className, ...props }, ref) => {
   const { orientation, highlightCenter } = useCarousel()
 
-  // We'll apply conditional styles based on whether this item is in center
   return (
     <div
       ref={ref}
@@ -208,7 +207,7 @@ const CarouselItem = React.forwardRef<
       className={cn(
         "min-w-0 shrink-0 grow-0 basis-full transition-all duration-300",
         orientation === "horizontal" ? "pl-4" : "pt-4",
-        highlightCenter && "group peer-data-[active=true]:shadow-lg peer-data-[active=true]:scale-105",
+        highlightCenter && "group peer-data-[active=true]:shadow-lg",
         className
       )}
       {...props}

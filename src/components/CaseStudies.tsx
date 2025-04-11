@@ -109,7 +109,7 @@ const CaseStudies = () => {
           }}
           className="w-full"
           autoplay={true}
-          autoplayInterval={10000}
+          autoplayInterval={5000}
           highlightCenter={true}
         >
           <CarouselContent>

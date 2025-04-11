@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { ArrowLeft, ExternalLink, Eye, LineChart, Rocket, Users, Code, Lightbulb } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -150,7 +151,7 @@ const CompetitionsPage = () => {
               }}
               className="w-full"
               autoplay={true}
-              autoplayInterval={10000}
+              autoplayInterval={5000}
               highlightCenter={true}
             >
               <CarouselContent className="-ml-4">
