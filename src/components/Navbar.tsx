@@ -2,19 +2,31 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-
-const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Competitions", href: "#case-studies" },
-  { label: "Achievements", href: "#achievements" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" }
-];
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  
+  // Determine if we're on the main page or competitions page
+  const isHome = location.pathname === "/";
+
+  // Dynamic navigation items based on current page
+  const navItems = isHome 
+    ? [
+        { label: "Home", href: "#home" },
+        { label: "About", href: "#about" },
+        { label: "Competitions", href: "#case-studies" },
+        { label: "Achievements", href: "#achievements" },
+        { label: "Skills", href: "#skills" },
+        { label: "Contact", href: "#contact" }
+      ]
+    : [
+        { label: "Back to Home", href: "/", isRouterLink: true },
+        { label: "Featured Competitions", href: "#featured-competitions" },
+        { label: "All Competitions", href: "#all-competitions" }
+      ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,22 +52,31 @@ const Navbar = () => {
       }`}
     >
       <div className="container max-w-6xl mx-auto px-4 flex justify-between items-center">
-        <a href="#home" className="text-xl md:text-2xl font-display font-bold text-navy-800">
+        <Link to="/" className="text-xl md:text-2xl font-display font-bold text-navy-800">
           Luv<span className="text-navy-800"> Agrawal</span>
-        </a>
+        </Link>
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6 items-center">
           {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="text-navy-700 hover:text-navy-900 font-medium transition-colors"
-            >
-              {item.label}
-            </a>
+            item.isRouterLink ? (
+              <Link
+                key={item.label}
+                to={item.href}
+                className="text-navy-700 hover:text-navy-900 font-medium transition-colors"
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-navy-700 hover:text-navy-900 font-medium transition-colors"
+              >
+                {item.label}
+              </a>
+            )
           ))}
-
         </nav>
 
         {/* Mobile Menu Button */}
@@ -76,16 +97,26 @@ const Navbar = () => {
       >
         <div className="flex flex-col h-full justify-center items-center gap-6 p-8">
           {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="text-navy-800 hover:text-navy-900 text-xl font-medium"
-              onClick={closeMenu}
-            >
-              {item.label}
-            </a>
+            item.isRouterLink ? (
+              <Link
+                key={item.label}
+                to={item.href}
+                className="text-navy-800 hover:text-navy-900 text-xl font-medium"
+                onClick={closeMenu}
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-navy-800 hover:text-navy-900 text-xl font-medium"
+                onClick={closeMenu}
+              >
+                {item.label}
+              </a>
+            )
           ))}
-          {/* Get in Touch button removed */}
         </div>
       </div>
     </header>

@@ -1,11 +1,12 @@
 
 import React, { useEffect } from 'react';
-import { ArrowRight, ExternalLink, Eye, LineChart } from 'lucide-react';
+import { ArrowRight, ExternalLink, Eye, LineChart, Rocket, Users, Code, Lightbulb } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
+// Updated to include all competitions data
 const caseStudies = [
   {
     id: 1,
@@ -24,6 +25,42 @@ const caseStudies = [
     tags: ["Gap Analysis", "Monetization", "Wireframing"],
     icon: <LineChart className="h-5 w-5" />,
     color: "bg-green-100 text-green-700",
+  },
+  {
+    id: 3,
+    title: "Prodhive B.A.S.H 7.0",
+    description: "Designed and pitched a product solution for sustainable urban mobility challenges.",
+    image: "/placeholder.svg",
+    tags: ["Product Strategy", "Market Research", "Pitch Deck"],
+    icon: <Rocket className="h-5 w-5" />,
+    color: "bg-purple-100 text-purple-700",
+  },
+  {
+    id: 4,
+    title: "ADventure",
+    description: "Created an innovative advertising campaign strategy for a consumer electronics brand.",
+    image: "/placeholder.svg",
+    tags: ["Marketing", "Creative Strategy", "Campaign Analysis"],
+    icon: <Users className="h-5 w-5" />,
+    color: "bg-orange-100 text-orange-700",
+  },
+  {
+    id: 5,
+    title: "PMx'25",
+    description: "Developed a product roadmap and go-to-market strategy for an AI-powered productivity tool.",
+    image: "/placeholder.svg",
+    tags: ["Product Management", "Roadmapping", "GTM Strategy"],
+    icon: <Code className="h-5 w-5" />,
+    color: "bg-red-100 text-red-700",
+  },
+  {
+    id: 6,
+    title: "Case-O-Nova 6.0",
+    description: "Analyzed business case and proposed innovative solution for supply chain optimization.",
+    image: "/placeholder.svg",
+    tags: ["Business Strategy", "Supply Chain", "Innovation"],
+    icon: <Lightbulb className="h-5 w-5" />,
+    color: "bg-yellow-100 text-yellow-700",
   },
 ];
 
@@ -73,7 +110,7 @@ const CaseStudies = () => {
         >
           <CarouselContent>
             {caseStudies.map((study) => (
-              <CarouselItem key={study.id} className="md:basis-1/2">
+              <CarouselItem key={study.id} className="md:basis-1/2 lg:basis-1/3">
                 <Card className="overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg h-full">
                   <div className="relative h-48 bg-navy-100">
                     <img 
@@ -108,9 +145,11 @@ const CaseStudies = () => {
                   </CardContent>
                   
                   <CardFooter className="flex justify-end">
-                    <Button variant="ghost" className="text-navy-700 hover:text-navy-900 p-0">
-                      View Details <ExternalLink className="ml-1 h-3 w-3" />
-                    </Button>
+                    <Link to={`/competitions#competition-${study.id}`}>
+                      <Button variant="ghost" className="text-navy-700 hover:text-navy-900 p-0">
+                        View Details <ExternalLink className="ml-1 h-3 w-3" />
+                      </Button>
+                    </Link>
                   </CardFooter>
                 </Card>
               </CarouselItem>

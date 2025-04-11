@@ -91,6 +91,37 @@ const CompetitionsPage = () => {
     };
   }, []);
 
+  // Handle anchor navigation scroll offset
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        setTimeout(() => {
+          const element = document.querySelector(hash);
+          if (element) {
+            const headerHeight = 100; // Approximate header height
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          }
+        }, 100);
+      }
+    };
+
+    // Handle initial hash
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-navy-50">
       <Navbar />
@@ -111,7 +142,7 @@ const CompetitionsPage = () => {
             A showcase of the various competitions I've participated in, highlighting my problem-solving approach and creative solutions.
           </p>
           
-          <div className="mb-12">
+          <div id="featured-competitions" className="mb-12 scroll-mt-24">
             <h2 className="text-2xl font-semibold text-navy-800 mb-6">Featured Competitions</h2>
             <Carousel 
               opts={{
@@ -157,9 +188,11 @@ const CompetitionsPage = () => {
                       </CardContent>
                       
                       <CardFooter className="flex justify-end">
-                        <Button variant="ghost" className="text-navy-700 hover:text-navy-900 p-0">
-                          View Details <ExternalLink className="ml-1 h-3 w-3" />
-                        </Button>
+                        <a href={`#competition-${competition.id}`}>
+                          <Button variant="ghost" className="text-navy-700 hover:text-navy-900 p-0">
+                            View Details <ExternalLink className="ml-1 h-3 w-3" />
+                          </Button>
+                        </a>
                       </CardFooter>
                     </Card>
                   </CarouselItem>
@@ -172,52 +205,56 @@ const CompetitionsPage = () => {
             </Carousel>
           </div>
           
-          <h2 className="text-2xl font-semibold text-navy-800 mb-6">All Competitions</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {allCompetitions.map((competition) => (
-              <Card 
-                key={competition.id} 
-                className="fade-in-bottom overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg"
-              >
-                <div className="relative h-48 bg-navy-100">
-                  <img 
-                    src={competition.image} 
-                    alt={competition.title} 
-                    className="w-full h-full object-cover opacity-60"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm ${competition.color}`}>
-                      {competition.icon}
-                      {competition.title}
-                    </span>
-                  </div>
-                </div>
-                
-                <CardHeader>
-                  <CardTitle className="text-xl">{competition.title}</CardTitle>
-                  <CardDescription className="text-navy-600">{competition.description}</CardDescription>
-                </CardHeader>
-                
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {competition.tags.map((tag) => (
-                      <span 
-                        key={tag} 
-                        className="bg-navy-100 text-navy-700 text-xs px-2 py-1 rounded"
-                      >
-                        {tag}
+          <div id="all-competitions" className="scroll-mt-24">
+            <h2 className="text-2xl font-semibold text-navy-800 mb-6">All Competitions</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {allCompetitions.map((competition) => (
+                <Card 
+                  key={competition.id} 
+                  id={`competition-${competition.id}`}
+                  className="fade-in-bottom overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg scroll-mt-24"
+                >
+                  <div className="relative h-48 bg-navy-100">
+                    <img 
+                      src={competition.image} 
+                      alt={competition.title} 
+                      className="w-full h-full object-cover opacity-60"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm ${competition.color}`}>
+                        {competition.icon}
+                        {competition.title}
                       </span>
-                    ))}
+                    </div>
                   </div>
-                </CardContent>
-                
-                <CardFooter className="flex justify-end">
-                  <Button variant="ghost" className="text-navy-700 hover:text-navy-900 p-0">
-                    View Details <ExternalLink className="ml-1 h-3 w-3" />
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
+                  
+                  <CardHeader>
+                    <CardTitle className="text-xl">{competition.title}</CardTitle>
+                    <CardDescription className="text-navy-600">{competition.description}</CardDescription>
+                  </CardHeader>
+                  
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {competition.tags.map((tag) => (
+                        <span 
+                          key={tag} 
+                          className="bg-navy-100 text-navy-700 text-xs px-2 py-1 rounded"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                  
+                  <CardFooter className="flex justify-between">
+                    <span className="text-sm text-navy-600">Date: 2023</span>
+                    <Button variant="ghost" className="text-navy-700 hover:text-navy-900 p-0">
+                      View Details <ExternalLink className="ml-1 h-3 w-3" />
+                    </Button>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
           </div>
           
           <div className="mt-12">
