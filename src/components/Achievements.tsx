@@ -96,7 +96,7 @@ const Achievements = () => {
                   <p className={achievement.highlight ? 'text-gold-700' : 'text-navy-600'}>
                     {achievement.competition}
                   </p>
-                  <Link to={`/competitions#competition-${achievement.competitionId}`}>
+                  <Link to={`/competition/${achievement.competitionId}`}>
                     <Button 
                       variant="ghost" 
                       className={`mt-3 p-0 text-sm flex items-center gap-1 ${

@@ -97,37 +97,6 @@ const CompetitionsPage = () => {
     };
   }, []);
 
-  // Handle anchor navigation scroll offset
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        setTimeout(() => {
-          const element = document.querySelector(hash);
-          if (element) {
-            const headerHeight = 100; // Approximate header height
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-            
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth"
-            });
-          }
-        }, 100);
-      }
-    };
-
-    // Handle initial hash
-    handleHashChange();
-
-    // Listen for hash changes
-    window.addEventListener('hashchange', handleHashChange);
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-    };
-  }, []);
-
   return (
     <div className="min-h-screen bg-navy-50">
       <Navbar />
@@ -158,12 +127,11 @@ const CompetitionsPage = () => {
               className="w-full"
               autoplay={true}
               autoplayInterval={5000}
-              highlightCenter={true}
             >
               <CarouselContent className="-ml-4">
                 {allCompetitions.map((competition, index) => (
-                  <CarouselItem key={competition.id} className="pl-4 sm:basis-1/2 lg:basis-1/3 peer" data-active={index === 1 ? true : false}>
-                    <Card className="overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg shadow-navy-200/30 h-full">
+                  <CarouselItem key={competition.id} className="pl-4 sm:basis-1/2 lg:basis-1/3 peer">
+                    <Card className="overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg h-full">
                       <div className="relative h-48 bg-navy-100">
                         <img 
                           src={competition.image} 
@@ -196,15 +164,15 @@ const CompetitionsPage = () => {
                         </div>
                       </CardContent>
                       
-                      <CardFooter className="flex justify-end">
-                        <a href={`#competition-${competition.id}`}>
+                      <CardFooter className="flex justify-center">
+                        <Link to={`/competition/${competition.id}`}>
                           <Button 
                             variant="ghost" 
                             className="text-navy-700 hover:text-navy-900 hover:shadow-md hover:shadow-blue-200/50 active:shadow-blue-300/60 focus:shadow-blue-300/60 transition-all p-0"
                           >
                             View Details <ExternalLink className="ml-1 h-3 w-3" />
                           </Button>
-                        </a>
+                        </Link>
                       </CardFooter>
                     </Card>
                   </CarouselItem>
@@ -264,12 +232,14 @@ const CompetitionsPage = () => {
                   
                   <CardFooter className="flex justify-between">
                     <span className="text-sm text-navy-600">Date: 2023</span>
-                    <Button 
-                      variant="ghost" 
-                      className="text-navy-700 hover:text-navy-900 hover:shadow-md hover:shadow-blue-200/50 active:shadow-blue-300/60 focus:shadow-blue-300/60 transition-all p-0"
-                    >
-                      View Details <ExternalLink className="ml-1 h-3 w-3" />
-                    </Button>
+                    <Link to={`/competition/${competition.id}`}>
+                      <Button 
+                        variant="ghost" 
+                        className="text-navy-700 hover:text-navy-900 hover:shadow-md hover:shadow-blue-200/50 active:shadow-blue-300/60 focus:shadow-blue-300/60 transition-all p-0"
+                      >
+                        View Details <ExternalLink className="ml-1 h-3 w-3" />
+                      </Button>
+                    </Link>
                   </CardFooter>
                 </Card>
               ))}
