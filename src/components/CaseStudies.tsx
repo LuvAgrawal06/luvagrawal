@@ -104,16 +104,16 @@ const CaseStudies = () => {
         
         <Carousel 
           opts={{
-            align: "start",
+            align: "center",
             loop: true,
           }}
           className="w-full"
           autoplay={true}
           autoplayInterval={5000}
         >
-          <CarouselContent>
+          <CarouselContent className="-ml-2 md:-ml-4">
             {caseStudies.map((study, index) => (
-              <CarouselItem key={study.id} className="md:basis-1/2 lg:basis-1/2 px-2">
+              <CarouselItem key={study.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/2">
                 <Card className="overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg h-full">
                   <div className="relative h-56 bg-navy-100">
                     <img 
@@ -156,7 +156,7 @@ const CaseStudies = () => {
                         <span className="relative z-10 flex items-center justify-center w-full">
                           View Details <ExternalLink className="ml-1 h-3 w-5" />
                         </span>
-                        <span className="absolute inset-0 rounded bg-navy-100 transform scale-0 transition-transform group-hover:scale-100 group-focus:scale-100"></span>
+                        <span className="absolute inset-0 rounded bg-navy-100 opacity-0 transform scale-x-50 transition-all group-hover:opacity-100 group-hover:scale-x-100 group-focus:opacity-100 group-focus:scale-x-100"></span>
                       </Button>
                     </Link>
                   </CardFooter>
