@@ -104,7 +104,7 @@ const CaseStudies = () => {
         
         <Carousel 
           opts={{
-            align: "center",
+            align: "start",
             loop: true,
           }}
           className="w-full"
@@ -113,9 +113,9 @@ const CaseStudies = () => {
         >
           <CarouselContent>
             {caseStudies.map((study, index) => (
-              <CarouselItem key={study.id} className="md:basis-1/2 lg:basis-1/3 peer" data-active={index === 1 ? true : false}>
+              <CarouselItem key={study.id} className="md:basis-1/2 lg:basis-1/2 px-2">
                 <Card className="overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg h-full">
-                  <div className="relative h-48 bg-navy-100">
+                  <div className="relative h-56 bg-navy-100">
                     <img 
                       src={study.image} 
                       alt={study.title} 
@@ -148,12 +148,15 @@ const CaseStudies = () => {
                   </CardContent>
                   
                   <CardFooter className="flex justify-center">
-                    <Link to={`/competition/${study.id}`}>
+                    <Link to={`/competition/${study.id}`} className="w-full">
                       <Button 
                         variant="ghost" 
-                        className="text-navy-700 hover:text-navy-900 hover:shadow-md hover:shadow-blue-200/50 active:shadow-blue-300/60 focus:shadow-blue-300/60 transition-all p-0"
+                        className="text-navy-700 hover:text-navy-900 w-full group relative"
                       >
-                        View Details <ExternalLink className="ml-1 h-3 w-5" />
+                        <span className="relative z-10 flex items-center justify-center w-full">
+                          View Details <ExternalLink className="ml-1 h-3 w-5" />
+                        </span>
+                        <span className="absolute inset-0 rounded bg-navy-100 transform scale-0 transition-transform group-hover:scale-100 group-focus:scale-100"></span>
                       </Button>
                     </Link>
                   </CardFooter>

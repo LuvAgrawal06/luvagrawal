@@ -121,7 +121,7 @@ const CompetitionsPage = () => {
             <h2 className="text-2xl font-semibold text-navy-800 mb-6">Featured Competitions</h2>
             <Carousel 
               opts={{
-                align: "center",
+                align: "start",
                 loop: true,
               }}
               className="w-full"
@@ -130,9 +130,9 @@ const CompetitionsPage = () => {
             >
               <CarouselContent className="-ml-4">
                 {allCompetitions.map((competition, index) => (
-                  <CarouselItem key={competition.id} className="pl-4 sm:basis-1/2 lg:basis-1/3 peer">
+                  <CarouselItem key={competition.id} className="pl-4 sm:basis-1/2 lg:basis-1/2">
                     <Card className="overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg h-full">
-                      <div className="relative h-48 bg-navy-100">
+                      <div className="relative h-56 bg-navy-100">
                         <img 
                           src={competition.image} 
                           alt={competition.title} 
@@ -165,12 +165,15 @@ const CompetitionsPage = () => {
                       </CardContent>
                       
                       <CardFooter className="flex justify-center">
-                        <Link to={`/competition/${competition.id}`}>
+                        <Link to={`/competition/${competition.id}`} className="w-full">
                           <Button 
                             variant="ghost" 
-                            className="text-navy-700 hover:text-navy-900 hover:shadow-md hover:shadow-blue-200/50 active:shadow-blue-300/60 focus:shadow-blue-300/60 transition-all p-0"
+                            className="text-navy-700 hover:text-navy-900 w-full group relative"
                           >
-                            View Details <ExternalLink className="ml-1 h-3 w-3" />
+                            <span className="relative z-10 flex items-center justify-center w-full">
+                              View Details <ExternalLink className="ml-1 h-3 w-3" />
+                            </span>
+                            <span className="absolute inset-0 rounded bg-navy-100 transform scale-0 transition-transform group-hover:scale-100 group-focus:scale-100"></span>
                           </Button>
                         </Link>
                       </CardFooter>
@@ -232,13 +235,14 @@ const CompetitionsPage = () => {
                   
                   <CardFooter className="flex justify-between">
                     <span className="text-sm text-navy-600">Date: 2023</span>
-                    <Link to={`/competition/${competition.id}`}>
+                    <Link to={`/competition/${competition.id}`} className="group relative">
                       <Button 
                         variant="ghost" 
-                        className="text-navy-700 hover:text-navy-900 hover:shadow-md hover:shadow-blue-200/50 active:shadow-blue-300/60 focus:shadow-blue-300/60 transition-all p-0"
+                        className="text-navy-700 hover:text-navy-900 relative z-10"
                       >
                         View Details <ExternalLink className="ml-1 h-3 w-3" />
                       </Button>
+                      <span className="absolute inset-0 rounded bg-navy-100 transform scale-0 transition-transform group-hover:scale-100 group-focus:scale-100"></span>
                     </Link>
                   </CardFooter>
                 </Card>
