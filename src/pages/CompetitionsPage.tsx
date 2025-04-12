@@ -18,6 +18,7 @@ const allCompetitions = [
     tags: ["UX Research", "Prototyping", "User Testing"],
     icon: <Eye className="h-5 w-5" />,
     color: "bg-blue-100 text-blue-700",
+    achievement: "1st Runner-Up at E-Summit'25 IIT BHU"
   },
   {
     id: 2,
@@ -27,6 +28,7 @@ const allCompetitions = [
     tags: ["Gap Analysis", "Monetization", "Wireframing"],
     icon: <LineChart className="h-5 w-5" />,
     color: "bg-green-100 text-green-700",
+    achievement: "National Winner at Technex'25"
   },
   {
     id: 3,
@@ -36,6 +38,7 @@ const allCompetitions = [
     tags: ["Product Strategy", "Market Research", "Pitch Deck"],
     icon: <Rocket className="h-5 w-5" />,
     color: "bg-purple-100 text-purple-700",
+    achievement: "1st Runner-Up at B.A.S.H. 7.0 IIT BHU"
   },
   {
     id: 4,
@@ -45,6 +48,7 @@ const allCompetitions = [
     tags: ["Marketing", "Creative Strategy", "Campaign Analysis"],
     icon: <Users className="h-5 w-5" />,
     color: "bg-orange-100 text-orange-700",
+    achievement: "1st Runner-Up at E-Summit'25 IIT BHU"
   },
   {
     id: 5,
@@ -54,6 +58,7 @@ const allCompetitions = [
     tags: ["Product Management", "Roadmapping", "GTM Strategy"],
     icon: <Code className="h-5 w-5" />,
     color: "bg-red-100 text-red-700",
+    achievement: "National Finalist at IIT G"
   },
   {
     id: 6,
@@ -63,6 +68,7 @@ const allCompetitions = [
     tags: ["Business Strategy", "Supply Chain", "Innovation"],
     icon: <Lightbulb className="h-5 w-5" />,
     color: "bg-yellow-100 text-yellow-700",
+    achievement: "National Finalist, Ranked 4th at IIM B"
   },
 ];
 
@@ -157,7 +163,7 @@ const CompetitionsPage = () => {
               <CarouselContent className="-ml-4">
                 {allCompetitions.map((competition, index) => (
                   <CarouselItem key={competition.id} className="pl-4 sm:basis-1/2 lg:basis-1/3 peer" data-active={index === 1 ? true : false}>
-                    <Card className="overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg h-full group-data-[center-item=true]:shadow-xl">
+                    <Card className="overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg shadow-navy-200/30 h-full">
                       <div className="relative h-48 bg-navy-100">
                         <img 
                           src={competition.image} 
@@ -192,7 +198,10 @@ const CompetitionsPage = () => {
                       
                       <CardFooter className="flex justify-end">
                         <a href={`#competition-${competition.id}`}>
-                          <Button variant="ghost" className="text-navy-700 hover:text-navy-900 p-0">
+                          <Button 
+                            variant="ghost" 
+                            className="text-navy-700 hover:text-navy-900 hover:shadow-md hover:shadow-blue-200/50 active:shadow-blue-300/60 focus:shadow-blue-300/60 transition-all p-0"
+                          >
                             View Details <ExternalLink className="ml-1 h-3 w-3" />
                           </Button>
                         </a>
@@ -215,7 +224,7 @@ const CompetitionsPage = () => {
                 <Card 
                   key={competition.id} 
                   id={`competition-${competition.id}`}
-                  className="fade-in-bottom overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg scroll-mt-24"
+                  className="fade-in-bottom overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg shadow-navy-200/30 scroll-mt-24"
                 >
                   <div className="relative h-48 bg-navy-100">
                     <img 
@@ -237,6 +246,10 @@ const CompetitionsPage = () => {
                   </CardHeader>
                   
                   <CardContent>
+                    <div className="mb-4">
+                      <h4 className="text-sm font-medium text-navy-700 mb-2">Achievement:</h4>
+                      <p className="text-navy-800 font-semibold">{competition.achievement}</p>
+                    </div>
                     <div className="flex flex-wrap gap-2">
                       {competition.tags.map((tag) => (
                         <span 
@@ -251,7 +264,10 @@ const CompetitionsPage = () => {
                   
                   <CardFooter className="flex justify-between">
                     <span className="text-sm text-navy-600">Date: 2023</span>
-                    <Button variant="ghost" className="text-navy-700 hover:text-navy-900 p-0">
+                    <Button 
+                      variant="ghost" 
+                      className="text-navy-700 hover:text-navy-900 hover:shadow-md hover:shadow-blue-200/50 active:shadow-blue-300/60 focus:shadow-blue-300/60 transition-all p-0"
+                    >
                       View Details <ExternalLink className="ml-1 h-3 w-3" />
                     </Button>
                   </CardFooter>

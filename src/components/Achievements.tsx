@@ -1,6 +1,8 @@
 
 import React, { useEffect } from 'react';
-import { Award, Medal, Trophy } from 'lucide-react';
+import { Award, Medal, Trophy, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const achievements = [
   {
@@ -9,36 +11,42 @@ const achievements = [
     competition: "Prodnosis 5.0 (Technex'25)",
     icon: <Trophy className="h-6 w-6 text-gold-500" />,
     highlight: true,
+    competitionId: 2
   },
   {
     id: 2,
     title: "1st Runner-Up",
     competition: "Prodhive (B.A.S.H. 7.0 IIT BHU)",
     icon: <Medal className="h-6 w-6 text-silver-600" />,
+    competitionId: 3
   },
   {
     id: 3,
     title: "1st Runner-Up",
     competition: "Design Rush (E-Summit'25 IIT BHU)",
     icon: <Medal className="h-6 w-6 text-silver-600" />,
+    competitionId: 1
   },
   {
     id: 4,
     title: "1st Runner-Up",
     competition: "ADventure (E-Summit'25 IIT BHU)",
     icon: <Medal className="h-6 w-6 text-silver-600" />,
+    competitionId: 4
   },
   {
     id: 5,
     title: "National Finalist",
     competition: "PMx'25 (IIT G)",
     icon: <Award className="h-6 w-6 text-navy-500" />,
+    competitionId: 5
   },
   {
     id: 6,
     title: "National Finalist",
     competition: "Ranked 4th at Case-O-Nova 6.0 (IIM B)",
     icon: <Award className="h-6 w-6 text-navy-500" />,
+    competitionId: 6
   },
 ];
 
@@ -88,6 +96,16 @@ const Achievements = () => {
                   <p className={achievement.highlight ? 'text-gold-700' : 'text-navy-600'}>
                     {achievement.competition}
                   </p>
+                  <Link to={`/competitions#competition-${achievement.competitionId}`}>
+                    <Button 
+                      variant="ghost" 
+                      className={`mt-3 p-0 text-sm flex items-center gap-1 ${
+                        achievement.highlight ? 'text-gold-700' : 'text-navy-600'
+                      } hover:text-navy-900 hover:shadow-md hover:shadow-blue-200/50 active:shadow-blue-300/60 focus:shadow-blue-300/60`}
+                    >
+                      View Competition <ExternalLink className="h-3 w-3" />
+                    </Button>
+                  </Link>
                 </div>
                 <div className={`p-3 rounded-full ${
                   achievement.highlight ? 'bg-gold-200/50' : 'bg-navy-100'

@@ -55,7 +55,7 @@ const caseStudies = [
     color: "bg-red-100 text-red-700",
   },
   {
-    id: 2,
+    id: 3,
     title: "Case-O-Nova 6.0",
     description: "Analyzed business case and proposed innovative solution for supply chain optimization.",
     image: "/placeholder.svg",
@@ -115,7 +115,7 @@ const CaseStudies = () => {
           <CarouselContent>
             {caseStudies.map((study, index) => (
               <CarouselItem key={study.id} className="md:basis-1/2 lg:basis-1/3 peer" data-active={index === 1 ? true : false}>
-                <Card className="overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg h-full group-data-[center-item=true]:shadow-xl">
+                <Card className="overflow-hidden border-navy-200 transition-all duration-300 hover:shadow-lg shadow-navy-200/30 h-full">
                   <div className="relative h-48 bg-navy-100">
                     <img 
                       src={study.image} 
@@ -150,7 +150,10 @@ const CaseStudies = () => {
                   
                   <CardFooter className="flex justify-end">
                     <Link to={`/competitions#competition-${study.id}`}>
-                      <Button variant="ghost" className="text-navy-700 hover:text-navy-900 p-0">
+                      <Button 
+                        variant="ghost" 
+                        className="text-navy-700 hover:text-navy-900 hover:shadow-md hover:shadow-blue-200/50 active:shadow-blue-300/60 focus:shadow-blue-300/60 transition-all p-0"
+                      >
                         View Details <ExternalLink className="ml-1 h-3 w-3" />
                       </Button>
                     </Link>
