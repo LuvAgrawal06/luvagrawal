@@ -153,7 +153,7 @@ const CaseStudies = () => {
                         variant="ghost" 
                         className="text-navy-700 hover:text-navy-900 hover:shadow-md hover:shadow-blue-200/50 active:shadow-blue-300/60 focus:shadow-blue-300/60 transition-all p-0"
                       >
-                        View Details <ExternalLink className="ml-1 h-3 w-3" />
+                        View Details <ExternalLink className="ml-1 h-3 w-5" />
                       </Button>
                     </Link>
                   </CardFooter>
