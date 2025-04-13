@@ -49,22 +49,23 @@ const Navbar = () => {
   return (
     <header 
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/90 backdrop-blur-md shadow-md py-2" : "bg-transparent py-4"
+        scrolled ? "bg-white/90 backdrop-blur-md shadow-lg py-3" : "bg-transparent py-5"
       }`}
     >
       <div className="container max-w-6xl mx-auto px-4 flex justify-between items-center">
-        <Link to="/" className="text-xl md:text-2xl font-display font-bold text-navy-800">
-          Luv<span className="text-navy-800"> Agrawal</span>
+        <Link to="/" className="text-xl md:text-2xl font-bold text-slate-800 flex items-center gap-2">
+          <span className="bg-blue-600 text-white w-8 h-8 rounded-md flex items-center justify-center">L</span>
+          <span>Luv Agrawal</span>
         </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-6 items-center">
+        <nav className="hidden md:flex gap-8 items-center">
           {navItems.map((item) => (
             item.isRouterLink ? (
               <Link
                 key={item.label}
                 to={item.href}
-                className="text-navy-700 hover:text-navy-900 font-medium transition-colors"
+                className="text-slate-700 hover:text-blue-600 font-medium transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full"
               >
                 {item.label}
               </Link>
@@ -72,7 +73,7 @@ const Navbar = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-navy-700 hover:text-navy-900 font-medium transition-colors"
+                className="text-slate-700 hover:text-blue-600 font-medium transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full"
               >
                 {item.label}
               </a>
@@ -82,7 +83,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-navy-800"
+          className="md:hidden text-slate-800 p-2"
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
@@ -96,13 +97,13 @@ const Navbar = () => {
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex flex-col h-full justify-center items-center gap-6 p-8">
+        <div className="flex flex-col h-full justify-center items-center gap-8 p-8">
           {navItems.map((item) => (
             item.isRouterLink ? (
               <Link
                 key={item.label}
                 to={item.href}
-                className="text-navy-800 hover:text-navy-900 text-xl font-medium"
+                className="text-slate-800 hover:text-blue-600 text-xl font-medium"
                 onClick={closeMenu}
               >
                 {item.label}
@@ -111,7 +112,7 @@ const Navbar = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-navy-800 hover:text-navy-900 text-xl font-medium"
+                className="text-slate-800 hover:text-blue-600 text-xl font-medium"
                 onClick={closeMenu}
               >
                 {item.label}
