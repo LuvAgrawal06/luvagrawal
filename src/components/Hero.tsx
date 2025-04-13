@@ -13,7 +13,7 @@ const Hero = () => {
           <div>
             <span className="text-sm uppercase tracking-wider text-slate-500 font-medium mb-4 block">Luv Agrawal • Product & Consulting</span>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-tight">
-              Creating <span className="text-blue-600">Impactful</span> Solutions
+              Strategic <span className="text-blue-600">Problem Solver</span>
             </h1>
           </div>
           
@@ -77,7 +77,8 @@ const Hero = () => {
         <ChevronDown className="text-slate-600" />
       </a>
       
-      <style jsx>{`
+      <style>
+        {`
         @keyframes blob {
           0% {
             transform: translate(0px, 0px) scale(1);
@@ -101,7 +102,8 @@ const Hero = () => {
         .animation-delay-4000 {
           animation-delay: 4s;
         }
-      `}</style>
+        `}
+      </style>
     </section>
   );
 };

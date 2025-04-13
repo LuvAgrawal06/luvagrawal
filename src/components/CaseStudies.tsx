@@ -86,7 +86,7 @@ const CaseStudies = () => {
   }, []);
 
   return (
-    <section id="case-studies" className="bg-gradient-to-b from-slate-50 to-slate-100 section-padding">
+    <section id="case-studies" className="bg-gradient-to-b from-slate-50 to-slate-100 section-padding py-20">
       <div className="container max-w-6xl mx-auto">
         <div className="flex justify-between items-end flex-wrap gap-4 mb-12">
           <div>
@@ -104,74 +104,66 @@ const CaseStudies = () => {
           </Link>
         </div>
         
-        <Carousel 
-          opts={{
-            align: "center",
-            loop: true,
-          }}
-          className="w-full"
-          autoplay={true}
-          autoplayInterval={5000}
-        >
-          <CarouselContent className="-ml-2 md:-ml-4">
-            {caseStudies.map((study, index) => (
-              <CarouselItem key={study.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/2">
-                <Card className="overflow-hidden bg-white border-0 transition-all duration-300 hover:translate-y-[-5px] h-full shadow-md hover:shadow-xl">
-                  <div className="relative h-56 bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-slate-700/10 to-slate-900/20 z-10"></div>
-                    <img 
-                      src={study.image} 
-                      alt={study.title} 
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute top-4 left-4 z-20">
-                      <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium shadow-sm ${study.color}`}>
-                        {study.icon}
-                        {study.title}
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-xl text-slate-800">{study.title}</CardTitle>
-                    <CardDescription className="text-slate-600">{study.description}</CardDescription>
-                  </CardHeader>
-                  
-                  <CardContent className="pb-2">
-                    <div className="flex flex-wrap gap-2">
-                      {study.tags.map((tag) => (
-                        <span 
-                          key={tag} 
-                          className="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded-md font-medium"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </CardContent>
-                  
-                  <CardFooter className="pt-2">
-                    <Link to={`/competition/${study.id}`} className="w-full">
-                      <Button 
-                        variant="ghost" 
-                        className="text-slate-700 hover:text-slate-900 w-full group relative"
-                      >
-                        <span className="relative z-10 flex items-center justify-center w-full font-medium">
-                          View Details <ExternalLink className="ml-1 h-3 w-5" />
-                        </span>
-                        <span className="absolute inset-0 rounded bg-slate-100 opacity-0 transform scale-x-50 transition-all group-hover:opacity-100 group-hover:scale-x-100 group-focus:opacity-100 group-focus:scale-x-100"></span>
-                      </Button>
-                    </Link>
-                  </CardFooter>
-                </Card>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="flex justify-end mt-6 gap-2">
-            <CarouselPrevious className="relative -left-0 top-0 translate-y-0 bg-white border-slate-200 hover:bg-slate-100 text-slate-700" />
-            <CarouselNext className="relative -right-0 top-0 translate-y-0 bg-white border-slate-200 hover:bg-slate-100 text-slate-700" />
-          </div>
-        </Carousel>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+          {caseStudies.map((study) => (
+            <Card 
+              key={study.id} 
+              className="overflow-hidden bg-white border-0 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl h-full fade-in-bottom"
+            >
+              <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-700/10 to-slate-900/20"></div>
+                <img 
+                  src={study.image} 
+                  alt={study.title} 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-4 left-4">
+                  <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium shadow-sm ${study.color}`}>
+                    {study.icon}
+                    {study.title}
+                  </span>
+                </div>
+              </div>
+              
+              <CardHeader className="pb-2">
+                <CardTitle className="text-xl text-slate-800">{study.title}</CardTitle>
+                <CardDescription className="text-slate-600">{study.description}</CardDescription>
+              </CardHeader>
+              
+              <CardContent className="pb-2">
+                <div className="flex flex-wrap gap-2">
+                  {study.tags.slice(0, 3).map((tag) => (
+                    <span 
+                      key={tag} 
+                      className="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded-md font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                  {study.tags.length > 3 && (
+                    <span className="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded-md font-medium">
+                      +{study.tags.length - 3} more
+                    </span>
+                  )}
+                </div>
+              </CardContent>
+              
+              <CardFooter className="pt-2">
+                <Link to={`/competition/${study.id}`} className="w-full">
+                  <Button 
+                    variant="ghost" 
+                    className="text-slate-700 hover:text-slate-900 w-full group relative"
+                  >
+                    <span className="relative z-10 flex items-center justify-center w-full">
+                      View Details <ExternalLink className="ml-1 h-3 w-3" />
+                    </span>
+                    <span className="absolute inset-0 rounded bg-slate-100 opacity-0 transform scale-x-50 transition-all group-hover:opacity-100 group-hover:scale-x-100"></span>
+                  </Button>
+                </Link>
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   );
