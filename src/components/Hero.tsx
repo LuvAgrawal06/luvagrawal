@@ -23,8 +23,8 @@ const Hero = () => {
           
           <div className="flex flex-wrap gap-4 pt-4">
             <Button className="bg-slate-800 hover:bg-slate-900 text-white px-6 py-6 h-auto rounded-md">
-              <a href="#case-studies" className="flex items-center">
-                View My Work <ArrowRight className="ml-2 h-5 w-5" />
+              <a href="#competitions" className="flex items-center">
+                View Competitions <ArrowRight className="ml-2 h-5 w-5" />
               </a>
             </Button>
             <Button variant="outline" className="border-slate-300 hover:border-slate-400 text-slate-700 hover:bg-slate-100 px-6 py-6 h-auto rounded-md">
@@ -38,7 +38,7 @@ const Hero = () => {
           <div className="absolute -left-20 -bottom-20 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
           <div className="absolute left-20 top-20 w-80 h-80 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
           
-          <div className="relative bg-white rounded-2xl p-8 shadow-xl border border-slate-100 backdrop-blur-sm z-10">
+          <div className="relative bg-white rounded-2xl p-8 shadow-xl border border-slate-100 backdrop-blur-sm z-10 hover:shadow-2xl transition-all duration-300">
             <div className="text-slate-800">
               <h2 className="text-2xl font-bold mb-3">Luv Agrawal</h2>
               <p className="text-slate-600 font-medium">IIT (BHU), Varanasi</p>
