@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
@@ -17,7 +16,7 @@ const Navbar = () => {
     ? [
         { label: "Home", href: "#home" },
         { label: "About", href: "#about" },
-        { label: "Competitions", href: "#case-studies" },
+        { label: "Projects", href: "#projects" },
         { label: "Achievements", href: "#achievements" },
         { label: "Skills", href: "#skills" },
         { label: "Contact", href: "#contact" },
@@ -25,8 +24,7 @@ const Navbar = () => {
       ]
     : [
         { label: "Back to Home", href: "/", isRouterLink: true },
-        { label: "Featured Competitions", href: "#featured-competitions" },
-        { label: "All Competitions", href: "#all-competitions" }
+        { label: "Featured Competitions", href: "#featured-competitions" }
       ];
 
   useEffect(() => {

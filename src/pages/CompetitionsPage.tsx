@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { ArrowLeft, ExternalLink, Eye, LineChart, Rocket, Users, Code, Lightbulb, ChevronRight } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -71,6 +70,10 @@ const allCompetitions = [
   },
 ];
 
+// Filter featured competitions for PMx and Case-O-Nova only
+const featuredCompetitionIds = [5, 6];
+const featuredCompetitions = allCompetitions.filter(c => featuredCompetitionIds.includes(c.id));
+
 const CompetitionsPage = () => {
   useEffect(() => {
     // Scroll to top when component mounts
@@ -113,19 +116,21 @@ const CompetitionsPage = () => {
           
           <div className="mb-16">
             <span className="text-sm uppercase tracking-wider text-slate-500 font-medium mb-2 block">Portfolio</span>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-800 border-b-2 border-slate-800 pb-2 inline-block">Case Competitions</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-800 border-b-2 border-slate-800 pb-2 inline-block">Competitions</h1>
             <p className="text-slate-600 text-lg mt-6 max-w-3xl">
               A showcase of the various competitions I've participated in, highlighting my problem-solving approach and creative solutions.
             </p>
           </div>
-          
-          <div id="all-competitions" className="scroll-mt-24">
+
+          {/* Featured Competitions Section */}
+          <div id="featured-competitions" className="scroll-mt-24 mb-16">
+            <h2 className="text-2xl font-bold text-slate-800 mb-6">Featured Competitions</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {allCompetitions.map((competition) => (
+              {featuredCompetitions.map((competition) => (
                 <Card 
                   key={competition.id} 
                   id={`competition-${competition.id}`}
-                  className="fade-in-bottom overflow-hidden bg-white border-0 transition-all duration-300 hover:-translate-y-2 shadow-md hover:shadow-xl scroll-mt-24"
+                  className="fade-in-bottom overflow-hidden bg-white border-0 transition-all duration-300 hover:-translate-y-2"
                 >
                   <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-200">
                     <div className="absolute inset-0 bg-gradient-to-br from-slate-700/10 to-slate-900/20 z-10"></div>
@@ -169,11 +174,12 @@ const CompetitionsPage = () => {
                     <Link to={`/competition/${competition.id}`} className="group relative">
                       <Button 
                         variant="ghost" 
-                        className="text-slate-700 hover:text-slate-900 relative z-10 flex items-center"
+                        className="text-slate-700 hover:text-slate-900 relative z-10 flex items-center p-0 h-auto min-h-0 bg-transparent border-0 shadow-none"
                       >
-                        View Details <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        <span className="relative z-10 flex items-center underline decoration-2 decoration-blue-700 underline-offset-4 transition-colors group-hover:text-blue-700 group-hover:decoration-blue-700" style={{textDecoration: "underline"}}>
+                          View Details <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </span>
                       </Button>
-                      <span className="absolute inset-0 rounded bg-slate-100 opacity-0 transform scale-x-50 transition-all group-hover:opacity-100 group-hover:scale-x-100 group-focus:opacity-100 group-focus:scale-x-100"></span>
                     </Link>
                   </CardFooter>
                 </Card>
@@ -181,27 +187,8 @@ const CompetitionsPage = () => {
             </div>
           </div>
           
-          <div className="mt-16">
-            <Pagination>
-              <PaginationContent>
-                <PaginationItem>
-                  <PaginationPrevious href="#" className="border border-slate-200 hover:bg-slate-100" />
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#" isActive className="bg-slate-800 hover:bg-slate-700">1</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#" className="text-slate-700 border border-slate-200 hover:bg-slate-100">2</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#" className="text-slate-700 border border-slate-200 hover:bg-slate-100">3</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationNext href="#" className="border border-slate-200 hover:bg-slate-100" />
-                </PaginationItem>
-              </PaginationContent>
-            </Pagination>
-          </div>
+          {/* Optionally keep pagination, but only for future extensibility */}
+          {/* ... keep pagination as is if needed */}
         </div>
       </main>
       

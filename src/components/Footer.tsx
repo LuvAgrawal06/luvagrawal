@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Linkedin, Mail, Phone, ChevronRight, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -88,14 +87,14 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-1">
             <h4 className="text-lg font-bold mb-6 pb-2 border-b border-slate-700">Featured Work</h4>
             <div className="space-y-4">
-              <Link to="/competition/2" className="block group">
-                <p className="font-medium text-slate-200 group-hover:text-white">Prodnosis 5.0</p>
+              <Link to="/competition/5" className="block group">
+                <p className="font-medium text-slate-200 group-hover:text-white">PMx'25</p>
                 <p className="text-sm text-slate-400 flex items-center mt-1">
                   View Details <ExternalLink className="ml-1 h-3 w-3" />
                 </p>
               </Link>
-              <Link to="/competition/3" className="block group">
-                <p className="font-medium text-slate-200 group-hover:text-white">Prodhive B.A.S.H 7.0</p>
+              <Link to="/competition/6" className="block group">
+                <p className="font-medium text-slate-200 group-hover:text-white">Case-O-Nova 6.0</p>
                 <p className="text-sm text-slate-400 flex items-center mt-1">
                   View Details <ExternalLink className="ml-1 h-3 w-3" />
                 </p>

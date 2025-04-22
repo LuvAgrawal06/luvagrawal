@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { ArrowRight, ExternalLink, Eye, LineChart, Rocket, Users, Code, Lightbulb } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -6,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
-// Updated to include all competitions data
 const competitions = [
   {
     id: 1,
@@ -122,7 +120,7 @@ const CaseStudies = () => {
             {competitions.map((competition) => (
               <CarouselItem key={competition.id} className="basis-full md:basis-1/2 lg:basis-1/2 pl-4">
                 <Card 
-                  className="overflow-hidden bg-white border-0 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl h-full fade-in-bottom"
+                  className="overflow-hidden bg-white border-0 transition-all duration-300 hover:-translate-y-2 h-full fade-in-bottom"
                 >
                   <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-slate-700/10 to-slate-900/20"></div>
@@ -166,12 +164,11 @@ const CaseStudies = () => {
                     <Link to={`/competition/${competition.id}`} className="w-full">
                       <Button 
                         variant="ghost" 
-                        className="text-slate-700 hover:text-slate-900 w-full group relative"
+                        className="text-slate-700 hover:text-slate-900 w-full group relative p-0 h-auto min-h-0 bg-transparent border-0 shadow-none"
                       >
-                        <span className="relative z-10 flex items-center justify-center w-full">
+                        <span className="relative z-10 flex items-center justify-center w-full underline decoration-2 decoration-blue-700 underline-offset-4 transition-colors group-hover:text-blue-700 group-hover:decoration-blue-700" style={{textDecoration: "underline"}}>
                           View Details <ExternalLink className="ml-1 h-3 w-3" />
                         </span>
-                        <span className="absolute inset-0 rounded bg-slate-100 opacity-0 transform scale-x-50 transition-all group-hover:opacity-100 group-hover:scale-x-100"></span>
                       </Button>
                     </Link>
                   </CardFooter>
@@ -179,7 +176,6 @@ const CaseStudies = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-
           <div className="flex items-center justify-center mt-8 gap-4">
             <CarouselPrevious className="static transform-none" />
             <CarouselNext className="static transform-none" />
