@@ -1,13 +1,15 @@
+
 import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import ProjectsDropdown from './ProjectsDropdown';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showProjects, setShowProjects] = useState(false);
   const location = useLocation();
-  
+
   // Determine if we're on the main page or competitions page
   const isHome = location.pathname === "/";
 
@@ -16,11 +18,10 @@ const Navbar = () => {
     ? [
         { label: "Home", href: "#home" },
         { label: "About", href: "#about" },
-        { label: "Projects", href: "#projects" },
+        { label: "Projects", href: "#", isProjects: true },
         { label: "Achievements", href: "#achievements" },
         { label: "Skills", href: "#skills" },
-        { label: "Contact", href: "#contact" },
-        { label: "Certifications", href: "#certifications" }
+        { label: "Contact", href: "#contact" }
       ]
     : [
         { label: "Back to Home", href: "/", isRouterLink: true },
@@ -44,6 +45,9 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
+  // Show/hide projects dropdown
+  const handleProjectsHover = (v: boolean) => setShowProjects(v);
+
   return (
     <header 
       className={`fixed w-full z-50 transition-all duration-300 ${
@@ -59,7 +63,24 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-8 items-center">
           {navItems.map((item) => (
-            item.isRouterLink ? (
+            item.isProjects ? (
+              <div
+                key="Projects"
+                className="relative"
+                onMouseEnter={() => handleProjectsHover(true)}
+                onMouseLeave={() => handleProjectsHover(false)}
+                tabIndex={0}
+              >
+                <button className="text-slate-700 hover:text-blue-600 font-medium transition-colors inline-flex items-center relative after:absolute after:bottom-[-4px] after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full">
+                  Projects <ChevronDown className="w-4 h-4 ml-1" />
+                </button>
+                {showProjects && (
+                  <div className="absolute left-0 mt-2 bg-white border rounded shadow-lg min-w-[200px] z-30">
+                    <ProjectsDropdown closeDropdown={() => setShowProjects(false)} />
+                  </div>
+                )}
+              </div>
+            ) : item.isRouterLink ? (
               <Link
                 key={item.label}
                 to={item.href}
@@ -97,6 +118,21 @@ const Navbar = () => {
       >
         <div className="flex flex-col h-full justify-center items-center gap-8 p-8">
           {navItems.map((item) => (
+            item.isProjects ? (
+              <div key="Projects-mobile" className="relative w-full">
+                <button
+                  className="text-slate-800 hover:text-blue-600 text-xl font-medium flex items-center w-full"
+                  onClick={() => setShowProjects((v) => !v)}
+                >
+                  Projects <ChevronDown className="w-5 h-5 ml-2" />
+                </button>
+                {showProjects && (
+                  <div className="bg-white border rounded shadow-lg mt-2 w-full z-30">
+                    <ProjectsDropdown closeDropdown={() => setShowProjects(false)} />
+                  </div>
+                )}
+              </div>
+            ) :
             item.isRouterLink ? (
               <Link
                 key={item.label}

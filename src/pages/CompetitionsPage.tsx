@@ -70,16 +70,15 @@ const allCompetitions = [
   },
 ];
 
-// Filter featured competitions for PMx and Case-O-Nova only
 const featuredCompetitionIds = [5, 6];
 const featuredCompetitions = allCompetitions.filter(c => featuredCompetitionIds.includes(c.id));
 
+const restCompetitions = allCompetitions.filter(c => !featuredCompetitionIds.includes(c.id));
+
 const CompetitionsPage = () => {
   useEffect(() => {
-    // Scroll to top when component mounts
     window.scrollTo(0, 0);
     
-    // Handle fade-in animations
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -122,7 +121,6 @@ const CompetitionsPage = () => {
             </p>
           </div>
 
-          {/* Featured Competitions Section */}
           <div id="featured-competitions" className="scroll-mt-24 mb-16">
             <h2 className="text-2xl font-bold text-slate-800 mb-6">Featured Competitions</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -130,7 +128,7 @@ const CompetitionsPage = () => {
                 <Card 
                   key={competition.id} 
                   id={`competition-${competition.id}`}
-                  className="fade-in-bottom overflow-hidden bg-white border-0 transition-all duration-300 hover:-translate-y-2"
+                  className="fade-in-bottom overflow-hidden bg-white border-0 transition-all duration-300 hover:-translate-y-2 shadow-none"
                 >
                   <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-200">
                     <div className="absolute inset-0 bg-gradient-to-br from-slate-700/10 to-slate-900/20 z-10"></div>
@@ -172,23 +170,78 @@ const CompetitionsPage = () => {
                   <CardFooter className="flex justify-between">
                     <span className="text-sm text-slate-500">Date: 2023</span>
                     <Link to={`/competition/${competition.id}`} className="group relative">
-                      <Button 
-                        variant="ghost" 
-                        className="text-slate-700 hover:text-slate-900 relative z-10 flex items-center p-0 h-auto min-h-0 bg-transparent border-0 shadow-none"
+                      <span 
+                        className="relative z-10 flex items-center underline decoration-2 decoration-blue-700 underline-offset-4 transition-colors hover:text-blue-700 hover:decoration-blue-700 cursor-pointer font-medium"
+                        style={{textDecoration: "underline", border: "none", background: "none", padding: "0"}}
                       >
-                        <span className="relative z-10 flex items-center underline decoration-2 decoration-blue-700 underline-offset-4 transition-colors group-hover:text-blue-700 group-hover:decoration-blue-700" style={{textDecoration: "underline"}}>
-                          View Details <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </span>
-                      </Button>
+                        View Details <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </span>
                     </Link>
                   </CardFooter>
                 </Card>
               ))}
             </div>
           </div>
-          
-          {/* Optionally keep pagination, but only for future extensibility */}
-          {/* ... keep pagination as is if needed */}
+
+          {restCompetitions.length > 0 && (
+            <div className="mb-16">
+              <h2 className="text-2xl font-bold text-slate-800 mb-6">All Competitions</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                {restCompetitions.map((competition) => (
+                  <Card 
+                    key={competition.id} 
+                    id={`competition-${competition.id}`}
+                    className="fade-in-bottom overflow-hidden bg-white border-0 transition-all duration-300 hover:-translate-y-2 shadow-none"
+                  >
+                    <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-200">
+                      <div className="absolute inset-0 bg-gradient-to-br from-slate-700/10 to-slate-900/20 z-10"></div>
+                      <img 
+                        src={competition.image} 
+                        alt={competition.title} 
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-4 left-4 z-20">
+                        <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium shadow-sm ${competition.color}`}>
+                          {competition.icon}
+                          {competition.title}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-xl text-slate-800">{competition.title}</CardTitle>
+                      <CardDescription className="text-slate-600">{competition.description}</CardDescription>
+                    </CardHeader>
+                    
+                    <CardContent>
+                      <div className="flex flex-wrap gap-2">
+                        {competition.tags.map((tag) => (
+                          <span 
+                            key={tag} 
+                            className="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded-md font-medium"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </CardContent>
+                    
+                    <CardFooter className="flex justify-end">
+                      <Link to={`/competition/${competition.id}`} className="group relative">
+                        <span 
+                          className="relative z-10 flex items-center underline decoration-2 decoration-blue-700 underline-offset-4 transition-colors hover:text-blue-700 hover:decoration-blue-700 cursor-pointer font-medium"
+                          style={{textDecoration: "underline", border: "none", background: "none", padding: "0"}}
+                        >
+                          View Details <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </span>
+                      </Link>
+                    </CardFooter>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          )}
+
         </div>
       </main>
       
