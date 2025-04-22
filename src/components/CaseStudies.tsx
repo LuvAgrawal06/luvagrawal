@@ -66,146 +66,149 @@ const competitions = [
 const featuredIds = [5, 6]; // PMx and Case-O-Nova
 const featured = competitions.filter(c => featuredIds.includes(c.id));
 
-useEffect(() => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in-view");
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
-  
-  const elements = document.querySelectorAll('.fade-in-bottom');
-  elements.forEach((el) => observer.observe(el));
-  
-  return () => {
-    elements.forEach((el) => observer.unobserve(el));
-  };
-}, []);
+const CaseStudies = () => {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    
+    const elements = document.querySelectorAll('.fade-in-bottom');
+    elements.forEach((el) => observer.observe(el));
+    
+    return () => {
+      elements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
 
-return (
-  <section id="competitions" className="bg-gradient-to-b from-slate-50 to-slate-100 section-padding py-20">
-    <div className="container max-w-6xl mx-auto">
-      <div className="flex justify-between items-end flex-wrap gap-4 mb-12">
-        <div>
-          <span className="text-sm uppercase tracking-wider text-slate-500 font-medium mb-2 block">Portfolio</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 border-b-2 border-slate-800 pb-2">Competitions</h2>
+  return (
+    <section id="competitions" className="bg-gradient-to-b from-slate-50 to-slate-100 section-padding py-20">
+      <div className="container max-w-6xl mx-auto">
+        <div className="flex justify-between items-end flex-wrap gap-4 mb-12">
+          <div>
+            <span className="text-sm uppercase tracking-wider text-slate-500 font-medium mb-2 block">Portfolio</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 border-b-2 border-slate-800 pb-2">Projects</h2>
+          </div>
+          <Link to="/competitions">
+            <Button 
+              variant="outline" 
+              className="border-slate-300 hover:border-slate-400 text-slate-700 hover:bg-slate-100 flex items-center gap-2 transition-all duration-300"
+            >
+              View All
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </Link>
         </div>
-        <Link to="/competitions">
-          <Button 
-            variant="outline" 
-            className="border-slate-300 hover:border-slate-400 text-slate-700 hover:bg-slate-100 flex items-center gap-2 transition-all duration-300"
-          >
-            View All
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </Link>
-      </div>
-      
-      <Carousel
-        className="w-full mt-10"
-        opts={{
-          align: "start",
-          loop: true,
-        }}
-        autoplay={true}
-        autoplayInterval={5000}
-      >
-        <CarouselContent className="px-4">
-          {competitions.map((competition) => (
-            <CarouselItem key={competition.id} className="basis-full md:basis-1/2 lg:basis-1/2 pl-4">
-              <Card 
-                className="overflow-hidden bg-white border-0 transition-all duration-300 hover:-translate-y-2 h-full fade-in-bottom shadow-none"
-              >
-                <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-slate-700/10 to-slate-900/20"></div>
-                  <img 
-                    src={competition.image} 
-                    alt={competition.title} 
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium shadow-sm ${competition.color}`}>
-                      {competition.icon}
-                      {competition.title}
-                    </span>
+        
+        <Carousel
+          className="w-full mt-10"
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          autoplay={true}
+          autoplayInterval={5000}
+        >
+          <CarouselContent className="px-4">
+            {competitions.map((competition) => (
+              <CarouselItem key={competition.id} className="basis-full md:basis-1/2 lg:basis-1/2 pl-4">
+                <Card 
+                  className="overflow-hidden bg-white border-0 transition-all duration-300 hover:-translate-y-2 h-full fade-in-bottom shadow-none"
+                >
+                  <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-700/10 to-slate-900/20"></div>
+                    <img 
+                      src={competition.image} 
+                      alt={competition.title} 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium shadow-sm ${competition.color}`}>
+                        {competition.icon}
+                        {competition.title}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-xl text-slate-800">{competition.title}</CardTitle>
-                  <CardDescription className="text-slate-600">{competition.description}</CardDescription>
-                </CardHeader>
-                
-                <CardContent className="pb-2">
-                  <div className="flex flex-wrap gap-2">
-                    {competition.tags.slice(0, 3).map((tag) => (
+                  
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-xl text-slate-800">{competition.title}</CardTitle>
+                    <CardDescription className="text-slate-600">{competition.description}</CardDescription>
+                  </CardHeader>
+                  
+                  <CardContent className="pb-2">
+                    <div className="flex flex-wrap gap-2">
+                      {competition.tags.slice(0, 3).map((tag) => (
+                        <span 
+                          key={tag} 
+                          className="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded-md font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                      {competition.tags.length > 3 && (
+                        <span className="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded-md font-medium">
+                          +{competition.tags.length - 3} more
+                        </span>
+                      )}
+                    </div>
+                  </CardContent>
+                  
+                  <CardFooter className="pt-2">
+                    <Link to={`/competition/${competition.id}`} className="w-full">
                       <span 
-                        key={tag} 
-                        className="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded-md font-medium"
+                        className="relative z-10 flex items-center justify-center w-full underline decoration-2 decoration-blue-700 underline-offset-4 transition-colors hover:text-blue-700 hover:decoration-blue-700 cursor-pointer font-medium"
                       >
-                        {tag}
+                        View Details <ExternalLink className="ml-1 h-3 w-3" />
                       </span>
-                    ))}
-                    {competition.tags.length > 3 && (
-                      <span className="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded-md font-medium">
-                        +{competition.tags.length - 3} more
-                      </span>
-                    )}
-                  </div>
-                </CardContent>
-                
-                <CardFooter className="pt-2">
-                  <Link to={`/competition/${competition.id}`} className="w-full">
-                    <span 
-                      className="relative z-10 flex items-center justify-center w-full underline decoration-2 decoration-blue-700 underline-offset-4 transition-colors hover:text-blue-700 hover:decoration-blue-700 cursor-pointer font-medium"
-                      style={{textDecoration: "underline", border: "none", background: "none", padding: "0"}}
-                    >
-                      View Details <ExternalLink className="ml-1 h-3 w-3" />
-                    </span>
-                  </Link>
-                </CardFooter>
-              </Card>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <div className="flex items-center justify-center mt-8 gap-4">
-          <CarouselPrevious className="static transform-none" />
-          <CarouselNext className="static transform-none" />
+                    </Link>
+                  </CardFooter>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="flex items-center justify-center mt-8 gap-4">
+            <CarouselPrevious className="static transform-none" />
+            <CarouselNext className="static transform-none" />
+          </div>
+        </Carousel>
+        {/* Featured work at portfolio bottom */}
+        <div className="flex flex-col items-center mt-16 gap-6">
+          <h3 className="text-2xl font-bold text-slate-800 mb-2">Featured Work</h3>
+          <div className="flex flex-col md:flex-row gap-6 w-full items-center justify-center">
+            {featured.map(c => (
+              <div key={c.id} className="flex flex-col items-center text-center bg-white p-6 rounded-lg border border-slate-200 shadow-none w-80">
+                <span className={`mb-2 px-3 py-1 rounded-full text-sm font-medium ${c.color}`}>
+                  {c.icon} {c.title}
+                </span>
+                <p className="font-semibold text-slate-800 mb-1">{c.title}</p>
+                <p className="text-slate-600 text-xs">{c.description}</p>
+                <Link
+                  to={`/competition/${c.id}`}
+                  className="mt-2 underline text-blue-700 font-medium hover:text-blue-800"
+                >View Details</Link>
+              </div>
+            ))}
+          </div>
         </div>
-      </Carousel>
-      {/* Featured work at portfolio bottom */}
-      <div className="flex flex-col items-center mt-16 gap-6">
-        <h3 className="text-2xl font-bold text-slate-800 mb-2">Featured Work</h3>
-        <div className="flex flex-col md:flex-row gap-6 w-full items-center justify-center">
-          {featured.map(c => (
-            <div key={c.id} className="flex flex-col items-center text-center bg-white p-6 rounded-lg border border-slate-200 shadow-none w-80">
-              <span className={`mb-2 px-3 py-1 rounded-full text-sm font-medium ${c.color}`}>
-                {c.icon} {c.title}
-              </span>
-              <p className="font-semibold text-slate-800 mb-1">{c.title}</p>
-              <p className="text-slate-600 text-xs">{c.description}</p>
-              <Link
-                to={`/competition/${c.id}`}
-                className="mt-2 underline text-blue-700 font-medium hover:text-blue-800"
-              >View Details</Link>
-            </div>
-          ))}
+        <div className="flex justify-center mt-12">
+          <Link to="/competitions" className="inline-block">
+            <Button 
+              className="bg-slate-800 hover:bg-slate-900 text-white px-6 py-2 rounded-md flex items-center gap-2"
+            >
+              View All Projects
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </Link>
         </div>
       </div>
-      <div className="flex justify-center mt-12">
-        <Link to="/competitions" className="inline-block">
-          <Button 
-            className="bg-slate-800 hover:bg-slate-900 text-white px-6 py-2 rounded-md flex items-center gap-2"
-          >
-            View All Competitions
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </Link>
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
+
+export default CaseStudies;
