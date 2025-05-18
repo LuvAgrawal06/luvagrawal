@@ -181,17 +181,17 @@ const CaseStudies = () => {
           <h3 className="text-2xl font-bold text-slate-800 mb-2">Featured Work</h3>
           <div className="flex flex-col md:flex-row gap-6 w-full items-center justify-center">
             {featured.map(c => (
-              <div key={c.id} className="flex flex-col items-center text-center bg-white p-6 rounded-lg border border-slate-200 shadow-none w-80">
-                <div className="flex items-center gap-2 mb-3">
+              <div key={c.id} className="flex flex-col items-start text-center bg-white p-6 rounded-lg border border-slate-200 shadow-none w-80">
+                <div className="self-start flex items-center gap-2 mb-3">
                   <div className={`p-2 rounded-full ${c.color}`}>
                     {c.icon}
                   </div>
                   <span className="font-semibold text-slate-800">{c.title}</span>
                 </div>
-                <p className="text-slate-600 text-sm mb-3">{c.description}</p>
+                <p className="text-slate-600 text-sm mb-3 text-left">{c.description}</p>
                 <Link
                   to={`/competition/${c.id}`}
-                  className="mt-2 underline text-blue-700 font-medium hover:text-blue-800"
+                  className="mt-2 underline text-blue-700 font-medium hover:text-blue-800 self-center"
                 >View Details</Link>
               </div>
             ))}
@@ -202,7 +202,7 @@ const CaseStudies = () => {
             <Button 
               className="bg-slate-800 hover:bg-slate-900 text-white px-6 py-2 rounded-md flex items-center gap-2"
             >
-              View All Projects
+              View All Competitions
               <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>

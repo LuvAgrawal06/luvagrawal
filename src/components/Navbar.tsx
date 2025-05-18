@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
@@ -48,6 +47,11 @@ const Navbar = () => {
   // Show/hide projects dropdown
   const handleProjectsHover = (v: boolean) => setShowProjects(v);
 
+  // Function to scroll to top of page
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <header 
       className={`fixed w-full z-50 transition-all duration-300 ${
@@ -55,7 +59,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container max-w-6xl mx-auto px-4 flex justify-between items-center">
-        <Link to="/" className="text-xl md:text-2xl font-bold text-slate-800 flex items-center gap-2">
+        <Link to="/" onClick={scrollToTop} className="text-xl md:text-2xl font-bold text-slate-800 flex items-center gap-2">
           <span className="bg-blue-600 text-white w-8 h-8 rounded-md flex items-center justify-center">L</span>
           <span>Luv Agrawal</span>
         </Link>
