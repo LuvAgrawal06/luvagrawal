@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { ArrowRight, ExternalLink, Eye, LineChart, Rocket, Users, Code, Lightbulb } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -183,11 +182,13 @@ const CaseStudies = () => {
           <div className="flex flex-col md:flex-row gap-6 w-full items-center justify-center">
             {featured.map(c => (
               <div key={c.id} className="flex flex-col items-center text-center bg-white p-6 rounded-lg border border-slate-200 shadow-none w-80">
-                <span className={`mb-2 px-3 py-1 rounded-full text-sm font-medium ${c.color}`}>
-                  {c.icon} {c.title}
-                </span>
-                <p className="font-semibold text-slate-800 mb-1">{c.title}</p>
-                <p className="text-slate-600 text-xs">{c.description}</p>
+                <div className="flex items-center gap-2 mb-3">
+                  <div className={`p-2 rounded-full ${c.color}`}>
+                    {c.icon}
+                  </div>
+                  <span className="font-semibold text-slate-800">{c.title}</span>
+                </div>
+                <p className="text-slate-600 text-sm mb-3">{c.description}</p>
                 <Link
                   to={`/competition/${c.id}`}
                   className="mt-2 underline text-blue-700 font-medium hover:text-blue-800"
